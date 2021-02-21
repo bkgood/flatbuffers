@@ -46,6 +46,7 @@ namespace flatbuffers {
 // Additionally, Parser::ParseType assumes bool..string is a contiguous range
 // of type tokens.
 // clang-format off
+//  ENUM    IDL       C++        Java    Go       CLR     Python  Rust   Kotlin Swift
 #define FLATBUFFERS_GEN_TYPES_SCALAR(TD) \
   TD(NONE,   "",       uint8_t,  byte,   byte,    byte,   uint8,   u8,   UByte, UInt8) \
   TD(UTYPE,  "",       uint8_t,  byte,   byte,    byte,   uint8,   u8,   UByte, UInt8) /* begin scalar/int */ \
@@ -582,6 +583,7 @@ struct IDLOptions {
     kRust = 1 << 14,
     kKotlin = 1 << 15,
     kSwift = 1 << 16,
+    kPerl = 1 << 17,
     kMAX
   };
 
@@ -1038,6 +1040,11 @@ extern bool GeneratePhp(const Parser &parser, const std::string &path,
 // See idl_gen_python.cpp.
 extern bool GeneratePython(const Parser &parser, const std::string &path,
                            const std::string &file_name);
+
+// Generate Perl files from the definitions in the Parser object.
+// See idl_gen_perl.cpp.
+extern bool GeneratePerl(const Parser &parser, const std::string &path,
+                         const std::string &file_name);
 
 // Generate Lobster files from the definitions in the Parser object.
 // See idl_gen_lobster.cpp.
